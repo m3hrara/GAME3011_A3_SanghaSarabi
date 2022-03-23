@@ -8,12 +8,14 @@ public class MinigameManager : MonoBehaviour
     private GameButton gameButton;
     [SerializeField]
     private GameButton[,] buttonArray;
+    private int tempSpriteNumber;
+    private GameButton tempButton;
     [SerializeField]
     private Canvas canvas;
     [SerializeField]
     private Transform startTransform;
     private int gridSize = 6;
-    // Start is called before the first frame update
+
     void Start()
     {
         Vector3 tempPos = startTransform.position;
@@ -33,9 +35,56 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MoveUp(int row, int column)
     {
-        
+        if (row < 5)
+        {
+            Debug.Log("moving up");
+
+            tempSpriteNumber = buttonArray[row + 1, column].randomNumber;
+            buttonArray[row + 1, column].randomNumber = buttonArray[row, column].randomNumber;
+            buttonArray[row, column].randomNumber = tempSpriteNumber;
+        }
+        else
+            return;
+    }
+    public void MoveLeft(int row, int column)
+    {
+        if (column > 0)
+        {
+            Debug.Log("moving left");
+
+            tempSpriteNumber = buttonArray[row, column - 1].randomNumber;
+            buttonArray[row, column - 1].randomNumber = buttonArray[row, column].randomNumber;
+            buttonArray[row, column].randomNumber = tempSpriteNumber;
+        }
+        else
+            return;
+    }
+    public void MoveDown(int row, int column)
+    {
+        if (row > 0)
+        {
+            Debug.Log("moving down");
+
+            tempSpriteNumber = buttonArray[row - 1, column].randomNumber;
+            buttonArray[row - 1, column].randomNumber = buttonArray[row, column].randomNumber;
+            buttonArray[row, column].randomNumber = tempSpriteNumber;
+        }
+        else
+            return;
+    }
+    public void MoveRight(int row, int column)
+    {
+        if (column < 5)
+        {
+            Debug.Log("moving right");
+
+            tempSpriteNumber = buttonArray[row, column + 1].randomNumber;
+            buttonArray[row, column + 1].randomNumber = buttonArray[row, column].randomNumber;
+            buttonArray[row, column].randomNumber = tempSpriteNumber;
+        }
+        else
+            return;
     }
 }
