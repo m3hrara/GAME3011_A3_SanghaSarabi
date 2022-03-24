@@ -138,9 +138,11 @@ MonoBehaviour:
   row: 0
   column: 0
   numOfTypes: 3
+  randomNumber: 0
   sprite1: {fileID: 21300000, guid: 1315f6866d645ac41a0a5a0f917c1b76, type: 3}
   sprite2: {fileID: 21300000, guid: 7122c281d663a4d40bb1f0a6ef2b3e1b, type: 3}
   sprite3: {fileID: 21300000, guid: e757cf6678d670240839f496aa43875a, type: 3}
+  emptySlotManager: {fileID: 0}
 --- !u!50 &7037881853810581560
 Rigidbody2D:
   serializedVersion: 4
