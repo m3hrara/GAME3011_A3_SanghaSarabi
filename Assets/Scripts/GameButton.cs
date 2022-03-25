@@ -51,7 +51,7 @@ public class GameButton : MonoBehaviour
         bottomBtn = null;
         leftBtn = null;
         rightBtn = null;
-        transform.position = new Vector3(startTrans.position.x, +startTrans.position.y + 900 + (column+1)*50, 0);
+        transform.position = new Vector3(startTrans.position.x, +startTrans.position.y + 800 + (column+1)*50, 0);
         randomNumber = Random.Range(1, numOfTypes + 1);
         SetButtonSprite();
 
