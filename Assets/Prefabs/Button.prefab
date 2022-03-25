@@ -50,7 +50,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.2127075, y: -50.710022}
+  m_Offset: {x: -1.2127075, y: -45.71582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -61,7 +61,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 37.583008, y: 49.647827}
+  m_Size: {x: 37.583008, y: 39.659424}
   m_EdgeRadius: 0
 --- !u!114 &4625369602524118342
 MonoBehaviour:
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.3859558, y: 54.052856}
+  m_Offset: {x: -1.3859558, y: 49.365173}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -137,7 +137,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 28.227722, y: 48.710693}
+  m_Size: {x: 28.227722, y: 39.335327}
   m_EdgeRadius: 0
 --- !u!114 &1730984397478478941
 MonoBehaviour:
@@ -202,7 +202,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -54.51541, y: 0}
+  m_Offset: {x: -45.775604, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -213,7 +213,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 57.565247, y: 30}
+  m_Size: {x: 40.085632, y: 30}
   m_EdgeRadius: 0
 --- !u!114 &2812540566204714215
 MonoBehaviour:
@@ -278,7 +278,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 54.349976, y: 0}
+  m_Offset: {x: 46.858734, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -289,7 +289,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 54.462402, y: 30}
+  m_Size: {x: 39.47992, y: 30}
   m_EdgeRadius: 0
 --- !u!114 &7708990280927165813
 MonoBehaviour:
@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3076a51535df41644ba91f8de067929b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temp: {fileID: 0}
   row: 0
   column: 0
   numOfTypes: 3

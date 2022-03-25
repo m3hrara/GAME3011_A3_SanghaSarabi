@@ -8,7 +8,6 @@ public class MinigameManager : MonoBehaviour
     [SerializeField]
     private GameButton gameButton;
     private int tempSpriteNumber;
-    public GameButton tempButton;
     [SerializeField]
     private Canvas canvas;
     [SerializeField]
@@ -63,7 +62,7 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].topBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                CheckForMatches();
+                //CheckForMatches();
                 Debug.Log("moving up");
             }
 
@@ -88,7 +87,7 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].leftBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                CheckForMatches();
+                //CheckForMatches();
                 Debug.Log("moving left");
 
             }
@@ -117,7 +116,7 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].bottomBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                CheckForMatches();
+                //CheckForMatches();
                 Debug.Log("moving down");
 
             }
@@ -144,7 +143,7 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].rightBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                CheckForMatches();
+                //CheckForMatches();
                 Debug.Log("moving right");
             }
 
@@ -166,60 +165,60 @@ public class MinigameManager : MonoBehaviour
         for (int index = 0; index < buttonList.Count; index++)
         {
             // check 2 to the left 2 to the right 
-            if ((buttonList[index].column - 2 >= 0) && (buttonList[index].column + 2 <= 5) && (buttonList[index - 2] != null && buttonList[index - 1] != null && buttonList[index] != null && buttonList[index + 1] != null && buttonList[index + 2] != null) && (buttonList[index - 2].randomNumber == buttonList[index - 1].randomNumber && buttonList[index - 1].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index + 1].randomNumber && buttonList[index + 1].randomNumber == buttonList[index + 2].randomNumber))
+            if ((buttonList[index].column - 2 >= 0) && (buttonList[index].column + 2 <= 5) && (buttonList[index].leftBtn.leftBtn != null && buttonList[index].leftBtn != null && buttonList[index] != null && buttonList[index].rightBtn != null && buttonList[index].rightBtn.rightBtn != null) && (buttonList[index].leftBtn.leftBtn.randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].rightBtn.rightBtn.randomNumber))
             {
-                if (!buttonList[index - 2].isMatched && !buttonList[index - 1].isMatched && !buttonList[index].isMatched && !buttonList[index + 1].isMatched && !buttonList[index + 2].isMatched)
+                if (!buttonList[index].leftBtn.leftBtn.isMatched && !buttonList[index].leftBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].rightBtn.isMatched && !buttonList[index].rightBtn.rightBtn.isMatched)
                 {
-                    buttonList[index - 2].isMatched = true;
-                    buttonList[index - 1].isMatched = true;
+                    buttonList[index].leftBtn.leftBtn.isMatched = true;
+                    buttonList[index].leftBtn.isMatched = true;
                     buttonList[index].isMatched = true;
-                    buttonList[index + 1].isMatched = true;
-                    buttonList[index + 2].isMatched = true;
+                    buttonList[index].rightBtn.isMatched = true;
+                    buttonList[index].rightBtn.rightBtn.isMatched = true;
 
-
-                    buttonList[index - 2].Reset();
-                    buttonList[index - 1].Reset();
+                    buttonList[index].leftBtn.leftBtn.Reset();
+                    buttonList[index].leftBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index + 1].Reset();
-                    buttonList[index + 2].Reset();
+                    buttonList[index].rightBtn.Reset();
+                    buttonList[index].rightBtn.rightBtn.Reset();
 
                     Debug.Log("match of 5");
                 }
 
             }
             // check 2 to the left 1 to the right
-            else if ((buttonList[index].column - 2 >= 0 && buttonList[index].column + 1 <= 5) && (buttonList[index - 2] != null && buttonList[index - 1] != null && buttonList[index] != null && buttonList[index + 1] != null) && (buttonList[index - 2].randomNumber == buttonList[index - 1].randomNumber && buttonList[index - 1].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index + 1].randomNumber))
+            else if ((buttonList[index].column - 2 >= 0 && buttonList[index].column + 1 <= 5) && (buttonList[index].leftBtn.leftBtn != null && buttonList[index].leftBtn != null && buttonList[index] != null && buttonList[index].rightBtn != null) && (buttonList[index].leftBtn.leftBtn.randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber))
             {
-                if (!buttonList[index - 2].isMatched && !buttonList[index - 1].isMatched && !buttonList[index].isMatched && !buttonList[index + 1].isMatched)
+                if (!buttonList[index].leftBtn.leftBtn.isMatched && !buttonList[index].leftBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].rightBtn.isMatched)
                 {
-                    buttonList[index - 2].isMatched = true;
-                    buttonList[index - 1].isMatched = true;
-                    buttonList[index].isMatched = true;
-                    buttonList[index + 1].isMatched = true;
 
-                    buttonList[index - 2].Reset();
-                    buttonList[index - 1].Reset();
+                    buttonList[index].leftBtn.leftBtn.isMatched = true;
+                    buttonList[index].leftBtn.isMatched = true;
+                    buttonList[index].isMatched = true;
+                    buttonList[index].rightBtn.isMatched = true;
+
+                    buttonList[index].leftBtn.leftBtn.Reset();
+                    buttonList[index].leftBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index + 1].Reset();
+                    buttonList[index].rightBtn.Reset();
 
                     Debug.Log("match of 4");
                 }
 
             }
             // check 2 to the right 1 to the left
-            else if ((buttonList[index].column + 2 <= 5 && buttonList[index].column -1 >= 0) && (buttonList[index + 2] != null && buttonList[index + 1] != null && buttonList[index] != null && buttonList[index - 1] != null) && (buttonList[index + 2].randomNumber == buttonList[index + 1].randomNumber && buttonList[index + 1].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index - 1].randomNumber))
+            else if ((buttonList[index].column + 2 <= 5 && buttonList[index].column - 1 >= 0) && (buttonList[index].rightBtn.rightBtn != null && buttonList[index].rightBtn != null && buttonList[index] != null && buttonList[index].leftBtn != null) && (buttonList[index].rightBtn.rightBtn.randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber))
             {
-                if (!buttonList[index + 2].isMatched && !buttonList[index + 1].isMatched && !buttonList[index].isMatched && !buttonList[index - 1].isMatched)
+                if (!buttonList[index].rightBtn.rightBtn.isMatched && !buttonList[index].rightBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].leftBtn.isMatched)
                 {
-                    buttonList[index + 2].isMatched = true;
-                    buttonList[index + 1].isMatched = true;
+                    buttonList[index].leftBtn.isMatched = true;
                     buttonList[index].isMatched = true;
-                    buttonList[index - 1].isMatched = true;
+                    buttonList[index].rightBtn.isMatched = true;
+                    buttonList[index].rightBtn.rightBtn.isMatched = true;
 
-                    buttonList[index + 2].Reset();
-                    buttonList[index + 1].Reset();
+                    buttonList[index].leftBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index - 1].Reset();
+                    buttonList[index].rightBtn.Reset();
+                    buttonList[index].rightBtn.rightBtn.Reset();
 
                     Debug.Log("match of 4");
                 }
@@ -228,16 +227,16 @@ public class MinigameManager : MonoBehaviour
 
 
             // check 2 to the left
-            else if ((buttonList[index].column - 2 >= 0) && (buttonList[index] != null && buttonList[index - 1] != null && buttonList[index - 2] != null) && (buttonList[index].randomNumber == buttonList[index - 1].randomNumber && buttonList[index - 1].randomNumber == buttonList[index - 2].randomNumber))
+            else if ((buttonList[index].column - 2 >= 0) && (buttonList[index] != null && buttonList[index].leftBtn != null && buttonList[index].leftBtn.leftBtn != null) && (buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].leftBtn.leftBtn.randomNumber))
             {
-                if (!buttonList[index - 2].isMatched && !buttonList[index - 1].isMatched && !buttonList[index].isMatched)
+                if (!buttonList[index].leftBtn.leftBtn.isMatched && !buttonList[index].leftBtn.isMatched && !buttonList[index].isMatched)
                 {
-                    buttonList[index - 2].isMatched = true;
-                    buttonList[index - 1].isMatched = true;
+                    buttonList[index].leftBtn.leftBtn.isMatched = true;
+                    buttonList[index].leftBtn.isMatched = true;
                     buttonList[index].isMatched = true;
 
-                    buttonList[index - 2].Reset();
-                    buttonList[index - 1].Reset();
+                    buttonList[index].leftBtn.leftBtn.Reset();
+                    buttonList[index].leftBtn.Reset();
                     buttonList[index].Reset();
 
                     Debug.Log("match of 3");
@@ -245,17 +244,17 @@ public class MinigameManager : MonoBehaviour
 
             }
             // check 2 to the right
-            else if ((buttonList[index].column + 2 <=5) && (buttonList[index] != null && buttonList[index + 1] != null && buttonList[index + 2] != null) && (buttonList[index].randomNumber == buttonList[index + 1].randomNumber && buttonList[index + 1].randomNumber == buttonList[index + 2].randomNumber))
+            else if ((buttonList[index].column + 2 <= 5) && (buttonList[index] != null && buttonList[index].rightBtn != null && buttonList[index].rightBtn.rightBtn != null) && (buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].rightBtn.rightBtn.randomNumber))
             {
-                if (!buttonList[index + 2].isMatched && !buttonList[index + 1].isMatched && !buttonList[index].isMatched)
+                if (!buttonList[index].rightBtn.rightBtn.isMatched && !buttonList[index].rightBtn.isMatched && !buttonList[index].isMatched)
                 {
-                    buttonList[index + 2].isMatched = true;
-                    buttonList[index + 1].isMatched = true;
                     buttonList[index].isMatched = true;
+                    buttonList[index].rightBtn.isMatched = true;
+                    buttonList[index].rightBtn.rightBtn.isMatched = true;
 
-                    buttonList[index + 2].Reset();
-                    buttonList[index + 1].Reset();
                     buttonList[index].Reset();
+                    buttonList[index].rightBtn.Reset();
+                    buttonList[index].rightBtn.rightBtn.Reset();
 
                     Debug.Log("match of 3");
                 }
@@ -263,17 +262,17 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 1 to the right 1 to the left
-            else if ((buttonList[index].column + 1 <= 5 && buttonList[index].column - 1 >= 0) && (buttonList[index + 1] != null && buttonList[index] != null && buttonList[index - 1] != null) && (buttonList[index + 1].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index - 1].randomNumber))
+            else if ((buttonList[index].column + 1 <= 5 && buttonList[index].column - 1 >= 0) && (buttonList[index].rightBtn != null && buttonList[index] != null && buttonList[index].leftBtn != null) && (buttonList[index].rightBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber))
             {
-                if (!buttonList[index + 1].isMatched && !buttonList[index].isMatched && !buttonList[index - 1].isMatched)
+                if (!buttonList[index].rightBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].leftBtn.isMatched)
                 {
-                    buttonList[index + 1].isMatched = true;
+                    buttonList[index].leftBtn.isMatched = true;
                     buttonList[index].isMatched = true;
-                    buttonList[index - 1].isMatched = true;
+                    buttonList[index].rightBtn.isMatched = true;
 
-                    buttonList[index + 1].Reset();
+                    buttonList[index].leftBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index - 1].Reset();
+                    buttonList[index].rightBtn.Reset();
 
                     Debug.Log("match of 3");
                 }
@@ -281,42 +280,40 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 up 2 down
-            if ((buttonList[index].row + 2 <= 5) && (buttonList[index].row - 2 >= 0) && (buttonList[index - 12] != null && buttonList[index - 6] != null && buttonList[index] != null && buttonList[index + 6] != null && buttonList[index + 12] != null) && (buttonList[index - 12].randomNumber == buttonList[index - 6].randomNumber && buttonList[index - 6].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index + 6].randomNumber && buttonList[index + 6].randomNumber == buttonList[index + 12].randomNumber))
+            else if ((buttonList[index].row + 2 <= 5) && (buttonList[index].row - 2 >= 0) && (buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
             {
-                if (!buttonList[index - 12].isMatched && !buttonList[index - 6].isMatched && !buttonList[index].isMatched && !buttonList[index + 6].isMatched && !buttonList[index + 12].isMatched)
+                if (!buttonList[index].bottomBtn.bottomBtn.isMatched && !buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched && !buttonList[index].topBtn.topBtn.isMatched)
                 {
-                    buttonList[index - 12].isMatched = true;
-                    buttonList[index - 6].isMatched = true;
+                    buttonList[index].bottomBtn.bottomBtn.isMatched = true;
+                    buttonList[index].bottomBtn.isMatched = true;
                     buttonList[index].isMatched = true;
-                    buttonList[index + 6].isMatched = true;
-                    buttonList[index + 12].isMatched = true;
+                    buttonList[index].topBtn.isMatched = true;
+                    buttonList[index].topBtn.topBtn.isMatched = true;
 
-
-                    buttonList[index - 12].Reset();
-                    buttonList[index - 6].Reset();
+                    buttonList[index].bottomBtn.bottomBtn.Reset();
+                    buttonList[index].bottomBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index + 6].Reset();
-                    buttonList[index + 12].Reset();
+                    buttonList[index].topBtn.Reset();
+                    buttonList[index].topBtn.topBtn.Reset();
 
                     Debug.Log("match of 5");
                 }
 
             }
             // check 2 up 1 down
-            if ((buttonList[index].row + 2 <= 5) && (buttonList[index].row - 1 >= 0) && (buttonList[index - 6] != null && buttonList[index] != null && buttonList[index + 6] != null && buttonList[index + 12] != null) && (buttonList[index - 6].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index + 6].randomNumber && buttonList[index + 6].randomNumber == buttonList[index + 12].randomNumber))
+            else if ((buttonList[index].row + 2 <= 5) && (buttonList[index].row - 1 >= 0) && (buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
             {
-                if (!buttonList[index - 6].isMatched && !buttonList[index].isMatched && !buttonList[index + 6].isMatched && !buttonList[index + 12].isMatched)
+                if (!buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched && !buttonList[index].topBtn.topBtn.isMatched)
                 {
-                    buttonList[index - 6].isMatched = true;
+                    buttonList[index].bottomBtn.isMatched = true;
                     buttonList[index].isMatched = true;
-                    buttonList[index + 6].isMatched = true;
-                    buttonList[index + 12].isMatched = true;
+                    buttonList[index].topBtn.isMatched = true;
+                    buttonList[index].topBtn.topBtn.isMatched = true;
 
-
-                    buttonList[index - 6].Reset();
+                    buttonList[index].bottomBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index + 6].Reset();
-                    buttonList[index + 12].Reset();
+                    buttonList[index].topBtn.Reset();
+                    buttonList[index].topBtn.topBtn.Reset();
 
                     Debug.Log("match of 4");
                 }
@@ -324,20 +321,19 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 down 1 up
-            if ((buttonList[index].row + 1 <= 5) && (buttonList[index].row - 2 >= 0) && (buttonList[index - 12] != null && buttonList[index - 6] != null && buttonList[index] != null && buttonList[index + 6] != null) && (buttonList[index - 12].randomNumber == buttonList[index - 6].randomNumber && buttonList[index - 6].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index + 6].randomNumber))
+            else if ((buttonList[index].row + 1 <= 5) && (buttonList[index].row - 2 >= 0) && (buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber))
             {
-                if (!buttonList[index - 12].isMatched && !buttonList[index - 6].isMatched && !buttonList[index].isMatched && !buttonList[index + 6].isMatched)
+                if (!buttonList[index].bottomBtn.bottomBtn.isMatched && !buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched)
                 {
-                    buttonList[index - 12].isMatched = true;
-                    buttonList[index - 6].isMatched = true;
+                    buttonList[index].bottomBtn.bottomBtn.isMatched = true;
+                    buttonList[index].bottomBtn.isMatched = true;
                     buttonList[index].isMatched = true;
-                    buttonList[index + 6].isMatched = true;
+                    buttonList[index].topBtn.isMatched = true;
 
-
-                    buttonList[index - 12].Reset();
-                    buttonList[index - 6].Reset();
+                    buttonList[index].bottomBtn.bottomBtn.Reset();
+                    buttonList[index].bottomBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index + 6].Reset();
+                    buttonList[index].topBtn.Reset();
 
                     Debug.Log("match of 4");
                 }
@@ -345,18 +341,17 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 up
-            if ((buttonList[index].row + 2 <= 5) && (buttonList[index] != null && buttonList[index + 6] != null && buttonList[index + 12] != null) && (buttonList[index].randomNumber == buttonList[index + 6].randomNumber && buttonList[index + 6].randomNumber == buttonList[index + 12].randomNumber))
+            else if ((buttonList[index].row + 2 <= 5) && (buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
             {
-                if (!buttonList[index].isMatched && !buttonList[index + 6].isMatched && !buttonList[index + 12].isMatched)
+                if (!buttonList[index].isMatched && !buttonList[index].topBtn.isMatched && !buttonList[index].topBtn.topBtn.isMatched)
                 {
                     buttonList[index].isMatched = true;
-                    buttonList[index + 6].isMatched = true;
-                    buttonList[index + 12].isMatched = true;
-
+                    buttonList[index].topBtn.isMatched = true;
+                    buttonList[index].topBtn.topBtn.isMatched = true;
 
                     buttonList[index].Reset();
-                    buttonList[index + 6].Reset();
-                    buttonList[index + 12].Reset();
+                    buttonList[index].topBtn.Reset();
+                    buttonList[index].topBtn.topBtn.Reset();
 
                     Debug.Log("match of 3");
                 }
@@ -364,17 +359,16 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 down
-            if ((buttonList[index].row - 2 >= 0) && (buttonList[index - 12] != null && buttonList[index - 6] != null && buttonList[index] != null) && (buttonList[index - 12].randomNumber == buttonList[index - 6].randomNumber && buttonList[index - 6].randomNumber == buttonList[index].randomNumber))
+            else if ((buttonList[index].row - 2 >= 0) && (buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber))
             {
-                if (!buttonList[index - 12].isMatched && !buttonList[index - 6].isMatched && !buttonList[index].isMatched && !buttonList[index + 6].isMatched)
+                if (!buttonList[index].bottomBtn.bottomBtn.isMatched && !buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched)
                 {
-                    buttonList[index - 12].isMatched = true;
-                    buttonList[index - 6].isMatched = true;
+                    buttonList[index].bottomBtn.bottomBtn.isMatched = true;
+                    buttonList[index].bottomBtn.isMatched = true;
                     buttonList[index].isMatched = true;
 
-
-                    buttonList[index - 12].Reset();
-                    buttonList[index - 6].Reset();
+                    buttonList[index].bottomBtn.bottomBtn.Reset();
+                    buttonList[index].bottomBtn.Reset();
                     buttonList[index].Reset();
 
                     Debug.Log("match of 3");
@@ -383,23 +377,24 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 1 up 1 down
-            if ((buttonList[index].row + 1 <= 5) && (buttonList[index].row - 1 >= 0) && (buttonList[index - 6] != null && buttonList[index] != null && buttonList[index + 6] != null) && (buttonList[index - 6].randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index + 6].randomNumber))
+            else if ((buttonList[index].row + 1 <= 5) && (buttonList[index].row - 1 >= 0) && (buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null) && (buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber))
             {
-                if (!buttonList[index - 6].isMatched && !buttonList[index].isMatched && !buttonList[index + 6].isMatched)
+                if (!buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched)
                 {
-                    buttonList[index - 6].isMatched = true;
+                    buttonList[index].bottomBtn.isMatched = true;
                     buttonList[index].isMatched = true;
-                    buttonList[index + 6].isMatched = true;
+                    buttonList[index].topBtn.isMatched = true;
 
-
-                    buttonList[index - 6].Reset();
+                    buttonList[index].bottomBtn.Reset();
                     buttonList[index].Reset();
-                    buttonList[index + 6].Reset();
+                    buttonList[index].topBtn.Reset();
 
                     Debug.Log("match of 3");
                 }
 
             }
+            else
+                return;
         }
     }
 

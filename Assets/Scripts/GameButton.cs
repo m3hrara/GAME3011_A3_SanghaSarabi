@@ -7,6 +7,7 @@ public class GameButton : MonoBehaviour
      , IPointerUpHandler
     , IPointerDownHandler
 {
+    public GameButton temp;
     private MinigameManager minigameManager;
     public int row, column;
     public int numOfTypes = 3;
@@ -47,10 +48,6 @@ public class GameButton : MonoBehaviour
     public void Reset()
     {
         isMatched = false;
-        topBtn = null;
-        bottomBtn = null;
-        leftBtn = null;
-        rightBtn = null;
         transform.position = new Vector3(startTrans.position.x, +startTrans.position.y + 800 + (column+1)*50, 0);
         randomNumber = Random.Range(1, numOfTypes + 1);
         SetButtonSprite();
