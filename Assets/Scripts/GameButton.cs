@@ -14,16 +14,16 @@ public class GameButton : MonoBehaviour
     public Sprite sprite1, sprite2, sprite3, sprite4, sprite5, obstacleSprite, boneSprite;
     private Vector3 mouseStart, mouseEnd;
     private float movementAngle;
-
+    public Transform trans;
     public EmptySlotManager emptySlotManager;
     void Start()
     {
 
         Debug.Log("RandomNum: " + randomNumber);
-
     }
     private void Awake()
     {
+        trans = this.transform;
         minigameManager = FindObjectOfType<MinigameManager>();
         emptySlotManager = FindObjectOfType<EmptySlotManager>();
 

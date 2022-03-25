@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MinigameManager : MonoBehaviour
 {
@@ -16,9 +17,14 @@ public class MinigameManager : MonoBehaviour
     [SerializeField]
     private List<GameButton> buttonList;
 
-    public int gameMode;
+    public int gameMode=1;
     public int boneCount = 0;
     public int obstacleCount = 0;
+    public TMP_Text scoreText;
+    public TMP_Text timerText;
+
+    private int Score=0;
+    private float timeLeft =60;
     void Start()
     {
         buttonList = new List<GameButton>();
@@ -151,7 +157,12 @@ public class MinigameManager : MonoBehaviour
     }
     private void Update()
     {
-
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+        }
+        scoreText.text = ("Score: " + Score);
+        timerText.text = ("Time Remaining: " + timeLeft.ToString("F0"));
     }
     private void CheckForMatches()
     {
@@ -306,5 +317,18 @@ public class MinigameManager : MonoBehaviour
         //    }
         //}
 
+    }
+
+    public void OnEasyPressed()
+    {
+        gameMode = 1;
+    }
+    public void OnMediumPressed()
+    {
+        gameMode = 2;
+    }
+    public void OnHardPressed()
+    {
+        gameMode = 3;
     }
 }
