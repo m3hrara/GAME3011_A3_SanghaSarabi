@@ -14,7 +14,8 @@ public class GameButton : MonoBehaviour
     public Sprite sprite1, sprite2, sprite3, sprite4, sprite5, obstacleSprite, boneSprite;
     private Vector3 mouseStart, mouseEnd;
     private float movementAngle;
-    public Transform trans;
+    public Transform startTrans;
+    public bool isMatched = false;
     public EmptySlotManager emptySlotManager;
     void Start()
     {
@@ -23,7 +24,7 @@ public class GameButton : MonoBehaviour
     }
     private void Awake()
     {
-        trans = this.transform;
+        startTrans = this.transform;
         minigameManager = FindObjectOfType<MinigameManager>();
         emptySlotManager = FindObjectOfType<EmptySlotManager>();
 
@@ -42,7 +43,14 @@ public class GameButton : MonoBehaviour
         randomNumber = Random.Range(1, numOfTypes + 1);
         SetButtonSprite();
     }
+    public void Reset()
+    {
+        isMatched = false;
+        transform.position = new Vector3(startTrans.position.x, +startTrans.position.y + 900, 0);
+        randomNumber = Random.Range(1, numOfTypes + 1);
+        SetButtonSprite();
 
+    }
     public void SetButtonSprite()
     {
         switch(randomNumber)
