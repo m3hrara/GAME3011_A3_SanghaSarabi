@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - EmptySlot
+  - Top
+  - Bottom
+  - Left
+  - Right
+  - Button
   layers:
   - Default
   - TransparentFX

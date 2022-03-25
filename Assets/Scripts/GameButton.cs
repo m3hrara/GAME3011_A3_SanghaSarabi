@@ -17,6 +17,7 @@ public class GameButton : MonoBehaviour
     public Transform startTrans;
     public bool isMatched = false;
     public EmptySlotManager emptySlotManager;
+    public GameButton topBtn, bottomBtn, leftBtn, rightBtn;
     void Start()
     {
 
@@ -46,7 +47,11 @@ public class GameButton : MonoBehaviour
     public void Reset()
     {
         isMatched = false;
-        transform.position = new Vector3(startTrans.position.x, +startTrans.position.y + 900, 0);
+        topBtn = null;
+        bottomBtn = null;
+        leftBtn = null;
+        rightBtn = null;
+        transform.position = new Vector3(startTrans.position.x, +startTrans.position.y + 900 + (column+1)*50, 0);
         randomNumber = Random.Range(1, numOfTypes + 1);
         SetButtonSprite();
 
