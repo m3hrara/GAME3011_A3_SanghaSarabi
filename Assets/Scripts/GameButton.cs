@@ -11,19 +11,34 @@ public class GameButton : MonoBehaviour
     public int row, column;
     public int numOfTypes = 3;
     public int randomNumber;
-    public Sprite sprite1, sprite2, sprite3;
+    public Sprite sprite1, sprite2, sprite3, sprite4, sprite5, obstacleSprite, boneSprite;
     private Vector3 mouseStart, mouseEnd;
     private float movementAngle;
 
     public EmptySlotManager emptySlotManager;
     void Start()
     {
-        minigameManager = FindObjectOfType<MinigameManager>();
-        emptySlotManager = FindObjectOfType<EmptySlotManager>();
+
+        Debug.Log("RandomNum: " + randomNumber);
 
     }
     private void Awake()
     {
+        minigameManager = FindObjectOfType<MinigameManager>();
+        emptySlotManager = FindObjectOfType<EmptySlotManager>();
+
+        if (minigameManager.gameMode ==1)
+        {
+            numOfTypes = 3;
+        }
+        else if (minigameManager.gameMode == 2)
+        {
+            numOfTypes = 5;
+        }
+        else if (minigameManager.gameMode == 3)
+        {
+            numOfTypes = 7;
+        }
         randomNumber = Random.Range(1, numOfTypes + 1);
         SetButtonSprite();
     }
@@ -40,6 +55,36 @@ public class GameButton : MonoBehaviour
                 break;
             case 3:
                 GetComponent<Image>().sprite = sprite3;
+                break;
+            case 4:
+                GetComponent<Image>().sprite = sprite4;
+                break;
+            case 5:
+                if(minigameManager.boneCount < 3)
+                {
+                    GetComponent<Image>().sprite = boneSprite;
+                    minigameManager.boneCount++;
+                }
+                else
+                {
+                    GetComponent<Image>().sprite = sprite3;
+                    randomNumber = 3;
+                }
+                break;
+            case 6:
+                GetComponent<Image>().sprite = sprite5;
+                break;
+            case 7:
+                if(minigameManager.obstacleCount < 3)
+                {
+                    GetComponent<Image>().sprite = obstacleSprite;
+                    minigameManager.obstacleCount++;
+                }
+                else
+                {
+                    GetComponent<Image>().sprite = sprite4;
+                    randomNumber = 4;
+                }
                 break;
         }
     }
@@ -76,6 +121,7 @@ public class GameButton : MonoBehaviour
     public void OnPointerUp(PointerEventData eventData)
     {
         mouseEnd = eventData.position;
+        if(randomNumber != 7)
         CalculateAngleDifference();
     }
 

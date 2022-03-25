@@ -16,6 +16,9 @@ public class MinigameManager : MonoBehaviour
     [SerializeField]
     private List<GameButton> buttonList;
 
+    public int gameMode;
+    public int boneCount = 0;
+    public int obstacleCount = 0;
     void Start()
     {
         buttonList = new List<GameButton>();
@@ -42,17 +45,22 @@ public class MinigameManager : MonoBehaviour
     {
         if (row < 5)
         {
-            Debug.Log("moving up");
+           
 
             int index = (row * 5 + row) + column;
-            tempSpriteNumber = buttonList[index+6].randomNumber;
-            buttonList[index + 6].randomNumber = buttonList[index].randomNumber;
-            buttonList[index].randomNumber = tempSpriteNumber;
+            if (buttonList[index + 6].randomNumber != 7)
+            {
+                tempSpriteNumber = buttonList[index + 6].randomNumber;
+                buttonList[index + 6].randomNumber = buttonList[index].randomNumber;
+                buttonList[index].randomNumber = tempSpriteNumber;
 
-            buttonList[index + 6].SetButtonSprite();
-            buttonList[index].SetButtonSprite();
+                buttonList[index + 6].SetButtonSprite();
+                buttonList[index].SetButtonSprite();
 
-            CheckForMatches();
+                CheckForMatches();
+                Debug.Log("moving up");
+            }
+            
 
         }
         else
@@ -62,18 +70,21 @@ public class MinigameManager : MonoBehaviour
     {
         if (column > 0)
         {
-            Debug.Log("moving left");
 
             int index = (row * 5 + row) + column;
-            tempSpriteNumber = buttonList[index - 1].randomNumber;
-            buttonList[index - 1].randomNumber = buttonList[index].randomNumber;
-            buttonList[index].randomNumber = tempSpriteNumber;
+            if (buttonList[index - 1].randomNumber != 7)
+            {
+                tempSpriteNumber = buttonList[index - 1].randomNumber;
+                buttonList[index - 1].randomNumber = buttonList[index].randomNumber;
+                buttonList[index].randomNumber = tempSpriteNumber;
 
-            buttonList[index - 1].SetButtonSprite();
-            buttonList[index].SetButtonSprite();
+                buttonList[index - 1].SetButtonSprite();
+                buttonList[index].SetButtonSprite();
 
-            CheckForMatches();
+                CheckForMatches();
+                Debug.Log("moving left");
 
+            }
 
 
         }
@@ -84,19 +95,21 @@ public class MinigameManager : MonoBehaviour
     {
         if (row > 0)
         {
-            Debug.Log("moving down");
 
             int index = (row * 5 + row) + column;
+            if (buttonList[index - 6].randomNumber != 7)
+            {
+                tempSpriteNumber = buttonList[index - 6].randomNumber;
+                buttonList[index - 6].randomNumber = buttonList[index].randomNumber;
+                buttonList[index].randomNumber = tempSpriteNumber;
 
-            tempSpriteNumber = buttonList[index - 6].randomNumber;
-            buttonList[index - 6].randomNumber = buttonList[index].randomNumber;
-            buttonList[index].randomNumber = tempSpriteNumber;
+                buttonList[index - 6].SetButtonSprite();
+                buttonList[index].SetButtonSprite();
 
-            buttonList[index - 6].SetButtonSprite();
-            buttonList[index].SetButtonSprite();
+                CheckForMatches();
+                Debug.Log("moving down");
 
-            CheckForMatches();
-
+            }
 
         }
         else
@@ -106,19 +119,20 @@ public class MinigameManager : MonoBehaviour
     {
         if (column < 5)
         {
-            Debug.Log("moving right");
 
             int index = (row * 5 + row) + column;
+            if (buttonList[index + 1].randomNumber != 7)
+            {
+                tempSpriteNumber = buttonList[index + 1].randomNumber;
+                buttonList[index + 1].randomNumber = buttonList[index].randomNumber;
+                buttonList[index].randomNumber = tempSpriteNumber;
 
-            tempSpriteNumber = buttonList[index + 1].randomNumber;
-            buttonList[index + 1].randomNumber = buttonList[index].randomNumber;
-            buttonList[index].randomNumber = tempSpriteNumber;
+                buttonList[index + 1].SetButtonSprite();
+                buttonList[index].SetButtonSprite();
 
-            buttonList[index + 1].SetButtonSprite();
-            buttonList[index].SetButtonSprite();
-
-            CheckForMatches();
-
+                CheckForMatches();
+                Debug.Log("moving right");
+            }
 
         }
         else
