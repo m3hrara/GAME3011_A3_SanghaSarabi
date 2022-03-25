@@ -67,8 +67,8 @@ public class GameButton : MonoBehaviour
                 }
                 else
                 {
-                    GetComponent<Image>().sprite = sprite3;
-                    randomNumber = 3;
+                    randomNumber = Random.Range(1, numOfTypes + 1);
+                    SetButtonSprite();
                 }
                 break;
             case 6:
@@ -82,8 +82,8 @@ public class GameButton : MonoBehaviour
                 }
                 else
                 {
-                    GetComponent<Image>().sprite = sprite4;
-                    randomNumber = 4;
+                    randomNumber = Random.Range(1, numOfTypes + 1);
+                    SetButtonSprite();
                 }
                 break;
         }

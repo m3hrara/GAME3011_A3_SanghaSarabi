@@ -8837,7 +8837,7 @@ MonoBehaviour:
   canvas: {fileID: 1580289866}
   startTransform: {fileID: 1774095817}
   buttonList: []
-  gameMode: 3
+  gameMode: 1
   boneCount: 0
   obstacleCount: 0
 --- !u!1 &1589615356

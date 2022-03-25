@@ -50,6 +50,8 @@ public class MinigameManager : MonoBehaviour
             int index = (row * 5 + row) + column;
             if (buttonList[index + 6].randomNumber != 7)
             {
+                boneCount = 0;
+                obstacleCount = 0;
                 tempSpriteNumber = buttonList[index + 6].randomNumber;
                 buttonList[index + 6].randomNumber = buttonList[index].randomNumber;
                 buttonList[index].randomNumber = tempSpriteNumber;
@@ -74,6 +76,9 @@ public class MinigameManager : MonoBehaviour
             int index = (row * 5 + row) + column;
             if (buttonList[index - 1].randomNumber != 7)
             {
+                boneCount = 0;
+                obstacleCount = 0;
+
                 tempSpriteNumber = buttonList[index - 1].randomNumber;
                 buttonList[index - 1].randomNumber = buttonList[index].randomNumber;
                 buttonList[index].randomNumber = tempSpriteNumber;
@@ -99,6 +104,9 @@ public class MinigameManager : MonoBehaviour
             int index = (row * 5 + row) + column;
             if (buttonList[index - 6].randomNumber != 7)
             {
+                boneCount = 0;
+                obstacleCount = 0;
+
                 tempSpriteNumber = buttonList[index - 6].randomNumber;
                 buttonList[index - 6].randomNumber = buttonList[index].randomNumber;
                 buttonList[index].randomNumber = tempSpriteNumber;
@@ -123,6 +131,9 @@ public class MinigameManager : MonoBehaviour
             int index = (row * 5 + row) + column;
             if (buttonList[index + 1].randomNumber != 7)
             {
+                boneCount = 0;
+                obstacleCount = 0;
+
                 tempSpriteNumber = buttonList[index + 1].randomNumber;
                 buttonList[index + 1].randomNumber = buttonList[index].randomNumber;
                 buttonList[index].randomNumber = tempSpriteNumber;
