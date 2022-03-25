@@ -444,7 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3076a51535df41644ba91f8de067929b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temp: {fileID: 0}
   row: 0
   column: 0
   numOfTypes: 3
@@ -463,6 +462,10 @@ MonoBehaviour:
   bottomBtn: {fileID: 0}
   leftBtn: {fileID: 0}
   rightBtn: {fileID: 0}
+  topBtn1: {fileID: 0}
+  bottomBtn1: {fileID: 0}
+  leftBtn1: {fileID: 0}
+  rightBtn1: {fileID: 0}
 --- !u!50 &7037881853810581560
 Rigidbody2D:
   serializedVersion: 4

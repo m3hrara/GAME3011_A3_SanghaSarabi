@@ -62,8 +62,8 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].topBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                //CheckForMatches();
                 Debug.Log("moving up");
+                //CheckForMatches();
             }
 
         }
@@ -87,8 +87,8 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].leftBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                //CheckForMatches();
                 Debug.Log("moving left");
+               // CheckForMatches();
 
             }
 
@@ -116,8 +116,8 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].bottomBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                //CheckForMatches();
                 Debug.Log("moving down");
+                //CheckForMatches();
 
             }
 
@@ -143,8 +143,8 @@ public class MinigameManager : MonoBehaviour
                 buttonList[index].rightBtn.SetButtonSprite();
                 buttonList[index].SetButtonSprite();
 
-                //CheckForMatches();
                 Debug.Log("moving right");
+                //CheckForMatches();
             }
 
         }
@@ -165,28 +165,28 @@ public class MinigameManager : MonoBehaviour
         for (int index = 0; index < buttonList.Count; index++)
         {
             // check 2 to the left 2 to the right 
-            if ((buttonList[index].column - 2 >= 0) && (buttonList[index].column + 2 <= 5) && (buttonList[index].leftBtn.leftBtn != null && buttonList[index].leftBtn != null && buttonList[index] != null && buttonList[index].rightBtn != null && buttonList[index].rightBtn.rightBtn != null) && (buttonList[index].leftBtn.leftBtn.randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].rightBtn.rightBtn.randomNumber))
+            if ((buttonList[index].leftBtn.GetLeft() != null && buttonList[index].leftBtn != null && buttonList[index] != null && buttonList[index].rightBtn != null && buttonList[index].rightBtn.GetRight() != null) && (buttonList[index].leftBtn.GetLeft().randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].rightBtn.GetRight().randomNumber))
             {
-                if (!buttonList[index].leftBtn.leftBtn.isMatched && !buttonList[index].leftBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].rightBtn.isMatched && !buttonList[index].rightBtn.rightBtn.isMatched)
+                if (!buttonList[index].leftBtn.GetLeft().isMatched && !buttonList[index].leftBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].rightBtn.isMatched && !buttonList[index].rightBtn.GetRight().isMatched)
                 {
-                    buttonList[index].leftBtn.leftBtn.isMatched = true;
+                    buttonList[index].leftBtn.GetLeft().isMatched = true;
                     buttonList[index].leftBtn.isMatched = true;
                     buttonList[index].isMatched = true;
                     buttonList[index].rightBtn.isMatched = true;
-                    buttonList[index].rightBtn.rightBtn.isMatched = true;
+                    buttonList[index].rightBtn.GetRight().isMatched = true;
 
-                    buttonList[index].leftBtn.leftBtn.Reset();
+                    buttonList[index].leftBtn.GetLeft().Reset();
                     buttonList[index].leftBtn.Reset();
                     buttonList[index].Reset();
                     buttonList[index].rightBtn.Reset();
-                    buttonList[index].rightBtn.rightBtn.Reset();
+                    buttonList[index].rightBtn.GetRight().Reset();
 
                     Debug.Log("match of 5");
                 }
 
             }
             // check 2 to the left 1 to the right
-            else if ((buttonList[index].column - 2 >= 0 && buttonList[index].column + 1 <= 5) && (buttonList[index].leftBtn.leftBtn != null && buttonList[index].leftBtn != null && buttonList[index] != null && buttonList[index].rightBtn != null) && (buttonList[index].leftBtn.leftBtn.randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber))
+            else if ((buttonList[index].leftBtn.leftBtn != null && buttonList[index].leftBtn != null && buttonList[index] != null && buttonList[index].rightBtn != null) && (buttonList[index].leftBtn.leftBtn.randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber))
             {
                 if (!buttonList[index].leftBtn.leftBtn.isMatched && !buttonList[index].leftBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].rightBtn.isMatched)
                 {
@@ -206,7 +206,7 @@ public class MinigameManager : MonoBehaviour
 
             }
             // check 2 to the right 1 to the left
-            else if ((buttonList[index].column + 2 <= 5 && buttonList[index].column - 1 >= 0) && (buttonList[index].rightBtn.rightBtn != null && buttonList[index].rightBtn != null && buttonList[index] != null && buttonList[index].leftBtn != null) && (buttonList[index].rightBtn.rightBtn.randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber))
+            else if ((buttonList[index].rightBtn.rightBtn != null && buttonList[index].rightBtn != null && buttonList[index] != null && buttonList[index].leftBtn != null) && (buttonList[index].rightBtn.rightBtn.randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber))
             {
                 if (!buttonList[index].rightBtn.rightBtn.isMatched && !buttonList[index].rightBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].leftBtn.isMatched)
                 {
@@ -227,7 +227,7 @@ public class MinigameManager : MonoBehaviour
 
 
             // check 2 to the left
-            else if ((buttonList[index].column - 2 >= 0) && (buttonList[index] != null && buttonList[index].leftBtn != null && buttonList[index].leftBtn.leftBtn != null) && (buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].leftBtn.leftBtn.randomNumber))
+            else if ((buttonList[index] != null && buttonList[index].leftBtn != null && buttonList[index].leftBtn.leftBtn != null) && (buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber && buttonList[index].leftBtn.randomNumber == buttonList[index].leftBtn.leftBtn.randomNumber))
             {
                 if (!buttonList[index].leftBtn.leftBtn.isMatched && !buttonList[index].leftBtn.isMatched && !buttonList[index].isMatched)
                 {
@@ -244,7 +244,7 @@ public class MinigameManager : MonoBehaviour
 
             }
             // check 2 to the right
-            else if ((buttonList[index].column + 2 <= 5) && (buttonList[index] != null && buttonList[index].rightBtn != null && buttonList[index].rightBtn.rightBtn != null) && (buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].rightBtn.rightBtn.randomNumber))
+            else if ((buttonList[index] != null && buttonList[index].rightBtn != null && buttonList[index].rightBtn.rightBtn != null) && (buttonList[index].randomNumber == buttonList[index].rightBtn.randomNumber && buttonList[index].rightBtn.randomNumber == buttonList[index].rightBtn.rightBtn.randomNumber))
             {
                 if (!buttonList[index].rightBtn.rightBtn.isMatched && !buttonList[index].rightBtn.isMatched && !buttonList[index].isMatched)
                 {
@@ -262,7 +262,7 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 1 to the right 1 to the left
-            else if ((buttonList[index].column + 1 <= 5 && buttonList[index].column - 1 >= 0) && (buttonList[index].rightBtn != null && buttonList[index] != null && buttonList[index].leftBtn != null) && (buttonList[index].rightBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber))
+            else if ((buttonList[index].rightBtn != null && buttonList[index] != null && buttonList[index].leftBtn != null) && (buttonList[index].rightBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].leftBtn.randomNumber))
             {
                 if (!buttonList[index].rightBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].leftBtn.isMatched)
                 {
@@ -280,7 +280,7 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 up 2 down
-            else if ((buttonList[index].row + 2 <= 5) && (buttonList[index].row - 2 >= 0) && (buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
+            else if ((buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
             {
                 if (!buttonList[index].bottomBtn.bottomBtn.isMatched && !buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched && !buttonList[index].topBtn.topBtn.isMatched)
                 {
@@ -301,7 +301,7 @@ public class MinigameManager : MonoBehaviour
 
             }
             // check 2 up 1 down
-            else if ((buttonList[index].row + 2 <= 5) && (buttonList[index].row - 1 >= 0) && (buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
+            else if ((buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
             {
                 if (!buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched && !buttonList[index].topBtn.topBtn.isMatched)
                 {
@@ -321,7 +321,7 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 down 1 up
-            else if ((buttonList[index].row + 1 <= 5) && (buttonList[index].row - 2 >= 0) && (buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber))
+            else if ((buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber))
             {
                 if (!buttonList[index].bottomBtn.bottomBtn.isMatched && !buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched)
                 {
@@ -341,7 +341,7 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 up
-            else if ((buttonList[index].row + 2 <= 5) && (buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
+            else if ((buttonList[index] != null && buttonList[index].topBtn != null && buttonList[index].topBtn.topBtn != null) && (buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber && buttonList[index].topBtn.randomNumber == buttonList[index].topBtn.topBtn.randomNumber))
             {
                 if (!buttonList[index].isMatched && !buttonList[index].topBtn.isMatched && !buttonList[index].topBtn.topBtn.isMatched)
                 {
@@ -359,7 +359,7 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 2 down
-            else if ((buttonList[index].row - 2 >= 0) && (buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber))
+            else if ((buttonList[index].bottomBtn.bottomBtn != null && buttonList[index].bottomBtn != null && buttonList[index] != null) && (buttonList[index].bottomBtn.bottomBtn.randomNumber == buttonList[index].bottomBtn.randomNumber && buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber))
             {
                 if (!buttonList[index].bottomBtn.bottomBtn.isMatched && !buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched)
                 {
@@ -377,7 +377,7 @@ public class MinigameManager : MonoBehaviour
             }
 
             // check 1 up 1 down
-            else if ((buttonList[index].row + 1 <= 5) && (buttonList[index].row - 1 >= 0) && (buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null) && (buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber))
+            else if ( (buttonList[index].bottomBtn != null && buttonList[index] != null && buttonList[index].topBtn != null) && (buttonList[index].bottomBtn.randomNumber == buttonList[index].randomNumber && buttonList[index].randomNumber == buttonList[index].topBtn.randomNumber))
             {
                 if (!buttonList[index].bottomBtn.isMatched && !buttonList[index].isMatched && !buttonList[index].topBtn.isMatched)
                 {
@@ -393,8 +393,8 @@ public class MinigameManager : MonoBehaviour
                 }
 
             }
-            else
-                return;
+            //else
+            //    return;
         }
     }
 

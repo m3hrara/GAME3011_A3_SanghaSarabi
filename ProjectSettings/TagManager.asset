@@ -10,6 +10,10 @@ TagManager:
   - Left
   - Right
   - Button
+  - Toptop
+  - Bottombottom
+  - Leftleft
+  - Rightright
   layers:
   - Default
   - TransparentFX

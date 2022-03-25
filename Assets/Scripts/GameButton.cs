@@ -7,7 +7,6 @@ public class GameButton : MonoBehaviour
      , IPointerUpHandler
     , IPointerDownHandler
 {
-    public GameButton temp;
     private MinigameManager minigameManager;
     public int row, column;
     public int numOfTypes = 3;
@@ -19,9 +18,9 @@ public class GameButton : MonoBehaviour
     public bool isMatched = false;
     public EmptySlotManager emptySlotManager;
     public GameButton topBtn, bottomBtn, leftBtn, rightBtn;
+
     void Start()
     {
-
         Debug.Log("RandomNum: " + randomNumber);
     }
     private void Awake()
@@ -150,5 +149,21 @@ public class GameButton : MonoBehaviour
                 column = collision.GetComponent<EmptySlotManager>().slotColumn;
             }
         }
+    }
+    public GameButton GetTop()
+    {
+        return topBtn;
+    }
+    public GameButton GetRight()
+    {
+        return rightBtn;
+    }
+    public GameButton GetLeft()
+    {
+        return leftBtn;
+    }
+    public GameButton GetBottom()
+    {
+        return bottomBtn;
     }
 }
