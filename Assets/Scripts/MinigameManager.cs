@@ -7,7 +7,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField]
     private GameButton gameButton;
     [SerializeField]
-    private GameButton[,] buttonArray;
+    public GameButton[,] buttonArray;
     private int tempSpriteNumber;
     private GameButton tempButton;
     [SerializeField]
@@ -44,6 +44,10 @@ public class MinigameManager : MonoBehaviour
             tempSpriteNumber = buttonArray[row + 1, column].randomNumber;
             buttonArray[row + 1, column].randomNumber = buttonArray[row, column].randomNumber;
             buttonArray[row, column].randomNumber = tempSpriteNumber;
+            buttonArray[row, column].SetButtonSprite();
+            buttonArray[row + 1, column].SetButtonSprite();
+
+            buttonArray[row, column].MatchDetection();
         }
         else
             return;
@@ -57,6 +61,8 @@ public class MinigameManager : MonoBehaviour
             tempSpriteNumber = buttonArray[row, column - 1].randomNumber;
             buttonArray[row, column - 1].randomNumber = buttonArray[row, column].randomNumber;
             buttonArray[row, column].randomNumber = tempSpriteNumber;
+            buttonArray[row, column].SetButtonSprite();
+            buttonArray[row, column - 1].SetButtonSprite();
         }
         else
             return;
@@ -70,6 +76,8 @@ public class MinigameManager : MonoBehaviour
             tempSpriteNumber = buttonArray[row - 1, column].randomNumber;
             buttonArray[row - 1, column].randomNumber = buttonArray[row, column].randomNumber;
             buttonArray[row, column].randomNumber = tempSpriteNumber;
+            buttonArray[row, column].SetButtonSprite();
+            buttonArray[row - 1, column].SetButtonSprite();
         }
         else
             return;
@@ -83,8 +91,35 @@ public class MinigameManager : MonoBehaviour
             tempSpriteNumber = buttonArray[row, column + 1].randomNumber;
             buttonArray[row, column + 1].randomNumber = buttonArray[row, column].randomNumber;
             buttonArray[row, column].randomNumber = tempSpriteNumber;
+            buttonArray[row, column].SetButtonSprite();
+            buttonArray[row, column + 1].SetButtonSprite();
         }
         else
             return;
     }
+
+    private void DestroyMatchesAt(int row, int column)
+    {
+        if(buttonArray[row,column].GetComponent<GameButton>().isMatched)
+        {
+            Destroy(buttonArray[row, column]);
+            buttonArray[row, column] = null;
+        }
+    }
+
+    public void DestroyMatches()
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            for(int j =0; j< 6; j++)
+            {
+                if (buttonArray[i, j] != null)
+                {
+                    DestroyMatchesAt(i, j);
+                }
+            }
+        }
+    }
+
+  
 }
