@@ -22,6 +22,7 @@ public class MinigameManager : MonoBehaviour
     public int obstacleCount = 0;
     public TMP_Text scoreText;
     public TMP_Text timerText;
+    public TMP_Text endText;
     public Slider scoreSlider;
     public GameObject endScreen;
     public GameObject minigameScreen;
@@ -53,19 +54,22 @@ public class MinigameManager : MonoBehaviour
             tempPos.y += 106;
         }
 
-        scoreSlider.maxValue = maxScore;
         if(curGameMode.GetComponent<GameModeScript>().currentGameMode == 1)
         {
             timeLeft = 45;
+            maxScore = 1000;
         }
         else if (curGameMode.GetComponent<GameModeScript>().currentGameMode == 2)
         {
             timeLeft = 60;
+            maxScore = 1000;
         }
         else if (curGameMode.GetComponent<GameModeScript>().currentGameMode == 3)
         {
             timeLeft = 80;
+            maxScore = 750;
         }
+        scoreSlider.maxValue = maxScore;
     }
 
     public void MoveUp(int row, int column)
@@ -180,6 +184,14 @@ public class MinigameManager : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
         }
+        else
+        {
+            Time.timeScale = 0;
+            curGameMode.GetComponent<GameModeScript>().currentGameMode = 1;
+            endScreen.SetActive(true);
+            minigameScreen.SetActive(false);
+            endText.text = ("You Lose! End Score: " + Score);
+        }
         scoreText.text = ("Score: " + Score);
         timerText.text = ("Time Remaining: " + timeLeft.ToString("F0"));
         scoreSlider.value = Score;
@@ -192,6 +204,7 @@ public class MinigameManager : MonoBehaviour
             curGameMode.GetComponent<GameModeScript>().currentGameMode = 1;
             endScreen.SetActive(true);
             minigameScreen.SetActive(false);
+            endText.text = ("You Win! End Score: " + Score);
         }
     }
     private void CheckForMatches()

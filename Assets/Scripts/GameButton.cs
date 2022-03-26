@@ -17,7 +17,7 @@ public class GameButton : MonoBehaviour
     public Transform startTrans;
     public bool isMatched = false;
     public EmptySlotManager emptySlotManager;
-    public GameButton topBtn, bottomBtn, leftBtn, rightBtn;
+    public GameButton topBtn, bottomBtn, leftBtn, rightBtn, topTopBtn, bottomBottomBtn, leftLeftBtn, rightRightBtn;
     public GameObject gameModeScript;
 
     void Start()
