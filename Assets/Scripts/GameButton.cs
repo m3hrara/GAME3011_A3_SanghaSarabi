@@ -18,6 +18,7 @@ public class GameButton : MonoBehaviour
     public bool isMatched = false;
     public EmptySlotManager emptySlotManager;
     public GameButton topBtn, bottomBtn, leftBtn, rightBtn;
+    public GameObject gameModeScript;
 
     void Start()
     {
@@ -25,19 +26,20 @@ public class GameButton : MonoBehaviour
     }
     private void Awake()
     {
+        gameModeScript = GameObject.FindGameObjectWithTag("GameMode");
         startTrans = this.transform;
         minigameManager = FindObjectOfType<MinigameManager>();
         emptySlotManager = FindObjectOfType<EmptySlotManager>();
 
-        if (minigameManager.gameMode ==1)
+        if (gameModeScript.GetComponent<GameModeScript>().currentGameMode ==1)
         {
             numOfTypes = 3;
         }
-        else if (minigameManager.gameMode == 2)
+        else if (gameModeScript.GetComponent<GameModeScript>().currentGameMode == 2)
         {
             numOfTypes = 5;
         }
-        else if (minigameManager.gameMode == 3)
+        else if (gameModeScript.GetComponent<GameModeScript>().currentGameMode == 3)
         {
             numOfTypes = 7;
         }

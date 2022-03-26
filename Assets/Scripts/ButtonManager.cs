@@ -9,4 +9,9 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Match-3");
     }
+
+    public void OnMenuClicked()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
 }
